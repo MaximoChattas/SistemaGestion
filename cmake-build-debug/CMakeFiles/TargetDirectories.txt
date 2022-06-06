@@ -1,0 +1,3 @@
+/Users/maxichattas/Documents/UCC/2º Año/Programación II/Práctico (Volpe)/Parciales/Parcial 2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/maxichattas/Documents/UCC/2º Año/Programación II/Práctico (Volpe)/Parciales/Parcial 2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/maxichattas/Documents/UCC/2º Año/Programación II/Práctico (Volpe)/Parciales/Parcial 2/cmake-build-debug/CMakeFiles/Parcial_2.dir
