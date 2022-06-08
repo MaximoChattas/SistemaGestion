@@ -4,6 +4,7 @@
 
 #include "Empleado.h"
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -14,9 +15,9 @@ Empleado::Empleado(int t_dni, string t_nombre, string t_mail, float t_sueldo , i
     sueldo{t_sueldo},
     cuentaSueldo(t_nro , sueldo)
 {
-    if(t_sueldo <= 0)
+    if(t_sueldo < 0)
     {
-        throw invalid_argument ("El sueldo debe ser mayor o igual a 0");
+        throw invalid_argument ("El sueldo debe ser mayor a 0");
     }
 
     if(t_dni <= 0)
@@ -53,4 +54,14 @@ float Empleado::get_sueldo() {
 
 CuentaBancaria Empleado::get_cuenta() {
     return cuentaSueldo;
+}
+
+std::ostream &operator<<(ostream &os, const Empleado &empleado) {
+
+    cout << "\n\nNombre: " << empleado.nombre << '\n';
+    cout << "DNI: " << empleado.dni << '\n';
+    cout << "Mail: " << empleado.mail << '\n';
+    cout << "Sueldo: $" << empleado.sueldo << '\n';
+    cout << empleado.cuentaSueldo;
+    return os;
 }

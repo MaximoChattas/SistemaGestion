@@ -19,11 +19,11 @@ void menu(SistemaGestion s1)
 {
     int mainMenu;
     do {
-        cout << "Bienvenido\nQué operación desea realizar?\n";
-        cout << "1: Registrar nueva cuenta\n";
-        cout << "2: Acceder a una cuenta registrada\n";
-        cout << "0: Salir\n";
         do {
+            cout << "Bienvenido\nQué operación desea realizar?\n";
+            cout << "1: Registrar nueva cuenta\n";
+            cout << "2: Acceder a una cuenta registrada\n";
+            cout << "0: Salir\n";
             cin >> mainMenu;
         } while (mainMenu != 1 && mainMenu!=2 && mainMenu!=0);
 

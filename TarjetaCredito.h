@@ -19,6 +19,9 @@ public:
     string get_categoria();
     float get_gastado();
 
+    friend std::ostream &operator<<(std::ostream &os, const TarjetaCredito &tarjeta);
+
+
 private:
     int numero;
     float limite;

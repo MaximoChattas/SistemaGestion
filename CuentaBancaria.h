@@ -21,6 +21,8 @@ public:
     void deposito(float);
     void extraccion(float);
 
+    friend std::ostream &operator<<(std::ostream &os, const CuentaBancaria &cuenta);
+
 private:
    int cuentaNro;
    float saldo;

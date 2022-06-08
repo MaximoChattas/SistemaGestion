@@ -19,6 +19,8 @@ public:
     int get_antiguedad();
     TarjetaCredito get_tarjeta();
 
+    friend std::ostream &operator<<(std::ostream &os, const Profesional &profesional);
+
 private:
     string titulo;
     string actividad;

@@ -22,7 +22,6 @@ void SistemaGestion::nuevaCuenta() {
 
     while (true) {
         do {
-
             cout << "Que tipo de cuenta desea crear?\n";
             cout << "1: Administrativo\n";
             cout << "2: Profesional\n";
@@ -99,26 +98,10 @@ void SistemaGestion::nuevaCuenta() {
 
 void SistemaGestion::mostrarCuenta(int indice, int tipo) {
     if (tipo == 1) {
-        cout << "\n\nNombre: " << gestionA[indice].get_nombre() << '\n';
-        cout << "DNI: " << gestionA[indice].get_dni() << '\n';
-        cout << "Mail: " << gestionA[indice].get_mail() << '\n';
-        cout << "Sueldo: $" << gestionA[indice].get_sueldo() << '\n';
-        cout << "Puesto: " << gestionA[indice].get_puesto() << '\n';
-        cout << "Saldo: $" << gestionA[indice].get_cuenta().get_saldo() << "\n\n";
-    } else if (tipo == 2) {
-        cout << "\n\nNombre: " << gestionP[indice].get_nombre() << '\n';
-        cout << "DNI: " << gestionP[indice].get_dni() << '\n';
-        cout << "Mail: " << gestionP[indice].get_mail() << '\n';
-        cout << "Sueldo: $" << gestionP[indice].get_sueldo() << '\n';
-        cout << "Titulo: " << gestionP[indice].get_titulo() << '\n';
-        cout << "Actividad: " << gestionP[indice].get_actividad() << '\n';
-        cout << "Antiguedad: " << gestionP[indice].get_antiguedad() << '\n';
-        cout << "Saldo: $" << gestionP[indice].get_cuenta().get_saldo() << "\n\n";
-        cout << "Tarjeta de Credito:\n";
-        cout << "\tNumero: " << gestionP[indice].get_tarjeta().get_numero() << '\n';
-        cout << "\tCategoria: " << gestionP[indice].get_tarjeta().get_categoria() << '\n';
-        cout << "\tLimite: $" << gestionP[indice].get_tarjeta().get_limite() << '\n';
-        cout << "\tUtilizado: $" << gestionP[indice].get_tarjeta().get_gastado() << "\n\n";
+        cout << gestionA[indice];
+    }
+    else if (tipo == 2) {
+        cout << gestionP[indice];
     }
 }
 
@@ -129,6 +112,7 @@ void SistemaGestion::acceso(int nro) {
 
     int menu;
 
+    //Cuentas Administrativas
     for (int i = 0; i < gestionA.size(); i++) {
         if (gestionA[i].get_cuenta().get_nro() == nro) {
             do {
@@ -177,6 +161,60 @@ void SistemaGestion::acceso(int nro) {
             } else if (menu == 4)
             {
                 gestionA[i].baja();
+            }
+            break;
+        }
+    }
+
+    //Cuentas Profesionales
+    for (int i = 0; i < gestionP.size(); i++) {
+        if (gestionP[i].get_cuenta().get_nro() == nro) {
+            do {
+                cout << "Cuenta Encontrada!\n";
+                cout << "Que operacion desea realizar " << gestionP[i].get_nombre() << "?\n";
+                cout << "1: Mostrar Datos\n";
+                cout << "2: Depositar\n";
+                cout << "3: Extraer\n";
+                cout << "4: Baja\n";
+                cin >> menu;
+            } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+
+            if (menu == 1) {
+                mostrarCuenta(i, 2);
+            } else if (menu == 2) {
+                while (true) {
+                    float monto;
+                    cout << "Ingrese el monto a depositar:\n";
+                    cin >> monto;
+
+                    try {
+                        gestionP[i].get_cuenta().deposito(monto);
+                        break;
+                    }
+                    catch (invalid_argument &Error) {
+                        cout << "Error: " << Error.what();
+                        continue;
+                    }
+                }
+
+            } else if (menu == 3) {
+                while (true) {
+                    float monto;
+                    cout << "Ingrese el monto a extraer:\n";
+                    cin >> monto;
+
+                    try {
+                        gestionP[i].get_cuenta().extraccion(monto);
+                        break;
+                    }
+                    catch (invalid_argument &Error) {
+                        cout << "Error: " << Error.what();
+                        continue;
+                    }
+                }
+            } else if (menu == 4)
+            {
+                gestionP[i].baja();
             }
             break;
         }

@@ -19,6 +19,8 @@ public:
     float get_sueldo();
     CuentaBancaria get_cuenta();
 
+    friend std::ostream &operator<<(std::ostream &os, const Empleado &empleado);
+
     virtual void baja() = 0;
 
 protected:

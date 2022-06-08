@@ -4,6 +4,7 @@
 
 #include "CuentaBancaria.h"
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -52,6 +53,11 @@ void CuentaBancaria::extraccion(float monto) {
     }
 
     saldo -= monto;
+}
+
+std::ostream &operator<<(ostream &os, const CuentaBancaria &cuenta) {
+    cout << "Saldo: $" << cuenta.saldo << '\n';
+    return os;
 }
 
 CuentaBancaria::~CuentaBancaria() = default;

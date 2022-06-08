@@ -4,6 +4,7 @@
 
 #include "Profesional.h"
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 Profesional::Profesional(int t_dni , string t_nombre , string t_mail , float t_sueldo, int t_nro , string t_titulo , string t_actividad, int t_antiguedad):
@@ -55,4 +56,19 @@ int Profesional::get_antiguedad() {
 
 TarjetaCredito Profesional::get_tarjeta() {
     return tarjeta;
+}
+
+std::ostream &operator<<(ostream &os, const Profesional &profesional) {
+
+    cout << "\n\nNombre: " << profesional.nombre << '\n';
+    cout << "DNI: " << profesional.dni << '\n';
+    cout << "Mail: " << profesional.mail << '\n';
+    cout << "Sueldo: $" << profesional.sueldo << '\n';
+    cout << "Titulo: " << profesional.titulo << '\n';
+    cout << "Actividad: " << profesional.actividad << '\n';
+    cout << "Antiguedad: " << profesional.antiguedad << " anios\n";
+    cout << profesional.cuentaSueldo;
+    cout << "Tarjeta de Credito:\n";
+    cout << profesional.tarjeta;
+    return os;
 }

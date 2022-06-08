@@ -4,6 +4,7 @@
 
 #include "TarjetaCredito.h"
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -63,6 +64,14 @@ string TarjetaCredito::get_categoria() {
 
 float TarjetaCredito::get_gastado() {
     return gastado;
+}
+
+std::ostream &operator<<(ostream &os, const TarjetaCredito &tarjeta) {
+    cout << "\tNumero: " << tarjeta.numero << '\n';
+    cout << "\tCategoria: " << tarjeta.categoria << '\n';
+    cout << "\tLimite: $" << tarjeta.limite << '\n';
+    cout << "\tUtilizado: $" << tarjeta.gastado << "\n\n";
+    return os;
 }
 
 TarjetaCredito::~TarjetaCredito() = default;

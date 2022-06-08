@@ -15,6 +15,8 @@ public:
     string get_puesto();
     void baja() override;
 
+    friend std::ostream &operator<<(std::ostream &os, const Administrativo &administrativo);
+
 
 private:
     string puesto;
