@@ -12,7 +12,6 @@ using namespace std;
 
 SistemaGestion::SistemaGestion() = default;
 
-
 void SistemaGestion::nuevaCuenta() {
 
     cantidadCuentas++;
@@ -99,8 +98,7 @@ void SistemaGestion::nuevaCuenta() {
 void SistemaGestion::mostrarCuenta(int indice, int tipo) {
     if (tipo == 1) {
         cout << gestionA[indice];
-    }
-    else if (tipo == 2) {
+    } else if (tipo == 2) {
         cout << gestionP[indice];
     }
 }
@@ -115,19 +113,25 @@ void SistemaGestion::acceso(int nro) {
     //Cuentas Administrativas
     for (int i = 0; i < gestionA.size(); i++) {
         if (gestionA[i].get_cuenta().get_nro() == nro) {
-            do {
-                cout << "Cuenta Encontrada!\n";
-                cout << "Que operacion desea realizar " << gestionA[i].get_nombre() << "?\n";
-                cout << "1: Mostrar Datos\n";
-                cout << "2: Depositar\n";
-                cout << "3: Extraer\n";
-                cout << "4: Baja\n";
-                cin >> menu;
-            } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+
+            if (gestionA[i].get_estado()) {
+                do {
+                    cout << "Cuenta Encontrada!\n";
+                    cout << "Que operacion desea realizar " << gestionA[i].get_nombre() << "?\n";
+                    cout << "1: Mostrar Datos\n";
+                    cout << "2: Depositar\n";
+                    cout << "3: Extraer\n";
+                    cout << "4: Baja\n";
+                    cin >> menu;
+                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+            } else {
+                cout << gestionA[i];
+            }
 
             if (menu == 1) {
                 mostrarCuenta(i, 1);
             } else if (menu == 2) {
+
                 while (true) {
                     float monto;
                     cout << "Ingrese el monto a depositar:\n";
@@ -158,8 +162,7 @@ void SistemaGestion::acceso(int nro) {
                         continue;
                     }
                 }
-            } else if (menu == 4)
-            {
+            } else if (menu == 4) {
                 gestionA[i].baja();
             }
             break;
@@ -169,15 +172,20 @@ void SistemaGestion::acceso(int nro) {
     //Cuentas Profesionales
     for (int i = 0; i < gestionP.size(); i++) {
         if (gestionP[i].get_cuenta().get_nro() == nro) {
-            do {
-                cout << "Cuenta Encontrada!\n";
-                cout << "Que operacion desea realizar " << gestionP[i].get_nombre() << "?\n";
-                cout << "1: Mostrar Datos\n";
-                cout << "2: Depositar\n";
-                cout << "3: Extraer\n";
-                cout << "4: Baja\n";
-                cin >> menu;
-            } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+
+            if (gestionP[i].get_estado()) {
+                do {
+                    cout << "Cuenta Encontrada!\n";
+                    cout << "Que operacion desea realizar " << gestionP[i].get_nombre() << "?\n";
+                    cout << "1: Mostrar Datos\n";
+                    cout << "2: Depositar\n";
+                    cout << "3: Extraer\n";
+                    cout << "4: Baja\n";
+                    cin >> menu;
+                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+            } else {
+                cout << gestionP[i];
+            }
 
             if (menu == 1) {
                 mostrarCuenta(i, 2);
@@ -212,11 +220,34 @@ void SistemaGestion::acceso(int nro) {
                         continue;
                     }
                 }
-            } else if (menu == 4)
-            {
+            } else if (menu == 4) {
                 gestionP[i].baja();
             }
             break;
         }
     }
 }
+
+int SistemaGestion::get_cantidad() {
+    return cantidadCuentas;
+}
+
+void SistemaGestion::mostrarTodo() {
+
+    cout << "Cuentas Administrativas:\n";
+
+    for (auto & i : gestionA)
+    {
+        cout << i;
+        cout << "\n\n";
+    }
+
+    cout << "\n\n\nCuentas Profesionales:\n";
+    for (auto & i : gestionP)
+    {
+        cout << i;
+        cout << "\n\n";
+    }
+}
+
+

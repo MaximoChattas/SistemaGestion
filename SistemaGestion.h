@@ -21,6 +21,8 @@ public:
     void mostrarCuenta(int , int);
     void mostrarTodo();
 
+    int get_cantidad();
+
 
 private:
     int cantidadCuentas = 0;

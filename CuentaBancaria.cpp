@@ -12,12 +12,12 @@ CuentaBancaria::CuentaBancaria(int t_nroCuenta, float t_saldo): cuentaNro{t_nroC
 {
     if (t_nroCuenta <= 0)
     {
-        throw invalid_argument ("El numero de cuenta debe ser mayor a 0");
+        throw invalid_argument ("El numero de cuenta debe ser mayor a 0\n");
     }
 
-    if (t_saldo <= 0)
+    if (t_saldo < 0)
     {
-        throw invalid_argument ("El saldo debe ser mayor o igual a 0");
+        throw invalid_argument ("El saldo debe ser mayor o igual a 0\n");
     }
 
 }

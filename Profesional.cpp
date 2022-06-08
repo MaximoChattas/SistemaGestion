@@ -16,46 +16,31 @@ Profesional::Profesional(int t_dni , string t_nombre , string t_mail , float t_s
 {
     if (t_titulo.empty())
     {
-        throw invalid_argument ("Debe especificar el titulo del profesional");
+        throw invalid_argument ("Debe especificar el titulo del profesional\n");
     }
 
     if (t_actividad.empty())
     {
-        throw invalid_argument ("Debe especificar la actividad que desarrolla el profesional");
+        throw invalid_argument ("Debe especificar la actividad que desarrolla el profesional\n");
     }
 
     if (t_antiguedad < 0)
     {
-        throw invalid_argument ("La antiguedad del profesional debe ser mayor o igual a 0 años");
+        throw invalid_argument ("La antiguedad del profesional debe ser mayor o igual a 0 años\n");
     }
 
     if (t_sueldo < 20000)
     {
-        throw invalid_argument("El sueldo minimo de un profesional es $20.000");
+        throw invalid_argument("El sueldo minimo de un profesional es $20.000\n");
     }
 
 }
 
 void Profesional::baja() {
+    estado = false;
     cuentaSueldo.~CuentaBancaria();
     tarjeta.~TarjetaCredito();
 
-}
-
-string Profesional::get_titulo() {
-    return titulo;
-}
-
-string Profesional::get_actividad() {
-    return actividad;
-}
-
-int Profesional::get_antiguedad() {
-    return antiguedad;
-}
-
-TarjetaCredito Profesional::get_tarjeta() {
-    return tarjeta;
 }
 
 std::ostream &operator<<(ostream &os, const Profesional &profesional) {
@@ -67,8 +52,14 @@ std::ostream &operator<<(ostream &os, const Profesional &profesional) {
     cout << "Titulo: " << profesional.titulo << '\n';
     cout << "Actividad: " << profesional.actividad << '\n';
     cout << "Antiguedad: " << profesional.antiguedad << " anios\n";
-    cout << profesional.cuentaSueldo;
-    cout << "Tarjeta de Credito:\n";
-    cout << profesional.tarjeta;
+    if (profesional.estado)
+    {
+        cout << profesional.cuentaSueldo;
+        cout << "Tarjeta de Credito:\n";
+        cout << profesional.tarjeta;
+    } else
+    {
+        cout << "Estado: BAJA\n";
+    }
     return os;
 }

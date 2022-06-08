@@ -17,6 +17,11 @@ int main() {
 
 void menu(SistemaGestion s1)
 {
+    if (s1.get_cantidad() == 0)
+    {
+        cout << "Registrar cuenta:\n";
+        s1.nuevaCuenta();
+    }
     int mainMenu;
     do {
         do {
@@ -54,4 +59,6 @@ void menu(SistemaGestion s1)
         }
 
     }while(mainMenu !=0);
+
+    s1.mostrarTodo();
 }

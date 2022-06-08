@@ -16,11 +16,8 @@ puesto{t_puesto}
 
 }
 
-string Administrativo::get_puesto() {
-    return puesto;
-}
-
 void Administrativo::baja() {
+    estado = false;
     cuentaSueldo.~CuentaBancaria();
 
 }
@@ -32,6 +29,12 @@ std::ostream &operator<<(ostream &os, const Administrativo &administrativo) {
     cout << "Mail: " << administrativo.mail << '\n';
     cout << "Sueldo: $" << administrativo.sueldo << '\n';
     cout << "Puesto: " << administrativo.puesto << '\n';
-    cout << administrativo.cuentaSueldo;
+    if (administrativo.estado)
+    {
+        cout << administrativo.cuentaSueldo;
+    } else
+    {
+        cout << "Estado: BAJA\n";
+    }
     return os;
 }

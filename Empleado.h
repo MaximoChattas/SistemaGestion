@@ -11,12 +11,10 @@ using namespace std;
 
 class Empleado {
 public:
-    Empleado(int , string , string , float , int);
+    Empleado(int , const string& , string , float , int);
 
-    int get_dni();
     string get_nombre();
-    string get_mail();
-    float get_sueldo();
+    bool get_estado() const;
     CuentaBancaria get_cuenta();
 
     friend std::ostream &operator<<(std::ostream &os, const Empleado &empleado);

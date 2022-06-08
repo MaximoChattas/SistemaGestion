@@ -12,7 +12,6 @@
 class Administrativo: public Empleado {
 public:
     Administrativo(int , string , string , float , int , string);
-    string get_puesto();
     void baja() override;
 
     friend std::ostream &operator<<(std::ostream &os, const Administrativo &administrativo);

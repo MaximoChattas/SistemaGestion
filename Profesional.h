@@ -14,9 +14,6 @@ public:
     Profesional(int , string , string , float , int , string , string , int);
     void baja() override;
 
-    string get_titulo();
-    string get_actividad();
-    int get_antiguedad();
     TarjetaCredito get_tarjeta();
 
     friend std::ostream &operator<<(std::ostream &os, const Profesional &profesional);
