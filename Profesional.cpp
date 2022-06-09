@@ -33,7 +33,7 @@ Profesional::Profesional(int t_dni, const string &t_nombre, const string &t_mail
 
 }
 
-TarjetaCredito Profesional::get_tarjeta() {
+TarjetaCredito & Profesional::get_tarjeta() {
     return tarjeta;
 }
 

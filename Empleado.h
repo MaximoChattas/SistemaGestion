@@ -18,7 +18,7 @@ public:
 
     bool get_estado() const;
 
-    CuentaBancaria get_cuenta();
+    CuentaBancaria &get_cuenta();
 
     virtual void baja() = 0;
 

@@ -166,6 +166,7 @@ void SistemaGestion::acceso(int nro) {
                 }
             } else if (menu == 4) {
                 gestionA[i].baja();
+                cout << "Su cuenta fue dada de baja exitosamente\n";
             }
             break;
         }
@@ -201,6 +202,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionP[i].get_cuenta().deposito(monto);
+                        cout << gestionP[i].get_cuenta();
                         break;
                     }
                     catch (invalid_argument &Error) {
@@ -217,6 +219,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionP[i].get_cuenta().extraccion(monto);
+                        cout << gestionP[i].get_cuenta();
                         break;
                     }
                     catch (invalid_argument &Error) {
@@ -226,6 +229,7 @@ void SistemaGestion::acceso(int nro) {
                 }
             } else if (menu == 4) {
                 gestionP[i].baja();
+                cout << "Su cuenta fue dada de baja exitosamente\n";
             } else if (menu == 5) {
                 while (true) {
                     float monto;

@@ -15,7 +15,7 @@ public:
 
     void baja() override;
 
-    TarjetaCredito get_tarjeta();
+    TarjetaCredito & get_tarjeta();
 
     void pagarResumen();
 

@@ -34,7 +34,7 @@ string Empleado::get_nombre() {
     return nombre;
 }
 
-CuentaBancaria Empleado::get_cuenta() {
+CuentaBancaria & Empleado::get_cuenta() {
     return cuentaSueldo;
 }
 
