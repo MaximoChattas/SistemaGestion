@@ -11,10 +11,11 @@
 
 class Administrativo: public Empleado {
 public:
-    Administrativo(int , string , string , float , int , string);
-    void baja() override;
+    Administrativo(int , const string& , const string& , float , int , const string&);
 
     friend std::ostream &operator<<(std::ostream &os, const Administrativo &administrativo);
+
+    void baja() override;
 
 
 private:

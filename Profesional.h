@@ -13,11 +13,11 @@ class Profesional : public Empleado {
 public:
     Profesional(int, const string&, const string&, float, int, const string&, const string&, int);
 
-    void baja() override;
-
     TarjetaCredito & get_tarjeta();
 
     void pagarResumen();
+
+    void baja() override;
 
     friend std::ostream &operator<<(std::ostream &os, const Profesional &profesional);
 

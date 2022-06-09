@@ -21,6 +21,7 @@ public:
     CuentaBancaria &get_cuenta();
 
     virtual void baja() = 0;
+    virtual void alta();
 
 protected:
     int dni;

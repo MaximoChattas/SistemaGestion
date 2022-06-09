@@ -37,13 +37,6 @@ TarjetaCredito & Profesional::get_tarjeta() {
     return tarjeta;
 }
 
-void Profesional::baja() {
-    estado = false;
-    cuentaSueldo.~CuentaBancaria();
-    tarjeta.~TarjetaCredito();
-
-}
-
 void Profesional::pagarResumen() {
 
     float monto;
@@ -69,6 +62,7 @@ std::ostream &operator<<(ostream &os, const Profesional &profesional) {
     os << "Actividad: " << profesional.actividad << '\n';
     os << "Antiguedad: " << profesional.antiguedad << " anios\n";
     if (profesional.estado) {
+        os << "Estado: ALTA\n";
         os << profesional.cuentaSueldo;
         os << "Tarjeta de Credito:\n";
         os << profesional.tarjeta;
@@ -76,4 +70,8 @@ std::ostream &operator<<(ostream &os, const Profesional &profesional) {
         os << "Estado: BAJA\n";
     }
     return os;
+}
+
+void Profesional::baja() {
+    estado = false;
 }

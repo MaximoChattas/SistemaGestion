@@ -41,3 +41,7 @@ CuentaBancaria & Empleado::get_cuenta() {
 bool Empleado::get_estado() const {
     return estado;
 }
+
+void Empleado::alta() {
+    estado = true;
+}

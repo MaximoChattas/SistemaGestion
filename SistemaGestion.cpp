@@ -122,10 +122,17 @@ void SistemaGestion::acceso(int nro) {
                     cout << "2: Depositar\n";
                     cout << "3: Extraer\n";
                     cout << "4: Baja\n";
+                    cout << "5: Alta\n"; //Falta Implementar!!
                     cin >> menu;
-                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4 && menu != 5);
             } else {
                 cout << gestionA[i];
+                do {
+                    cout << "Desea dar de Alta su cuenta nuevamente?\n";
+                    cout << "5: SI\n";
+                    cout << "0: NO\n";
+                    cin >> menu;
+                } while (menu != 0 && menu != 5);
             }
 
             if (menu == 1) {
@@ -150,6 +157,7 @@ void SistemaGestion::acceso(int nro) {
                 }
 
             } else if (menu == 3) {
+
                 while (true) {
                     float monto;
                     cout << "Ingrese el monto a extraer:\n";
@@ -167,8 +175,17 @@ void SistemaGestion::acceso(int nro) {
                     }
                 }
             } else if (menu == 4) {
+
                 gestionA[i].baja();
                 cout << "Su cuenta fue dada de baja exitosamente\n";
+            } else if (menu == 5) {
+
+                if (gestionA[i].get_estado()) {
+                    cout << "Su cuenta ya está de Alta\n";
+                } else {
+                    gestionA[i].alta();
+                    cout << "Su cuenta fue dada de Alta exitosamente\n";
+                }
             }
             break;
         }
@@ -186,18 +203,26 @@ void SistemaGestion::acceso(int nro) {
                     cout << "2: Depositar\n";
                     cout << "3: Extraer\n";
                     cout << "4: Baja\n";
-                    cout << "5: Usar Tarjeta de Credito\n";
-                    cout << "6: Pagar Resumen\n";
+                    cout << "5: Alta\n"; //Falta Implementar!!
+                    cout << "6: Usar Tarjeta de Credito\n";
+                    cout << "7: Pagar Resumen\n";
                     cin >> menu;
-                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4 && menu != 5 && menu != 6);
+                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4 && menu != 5 && menu != 6 && menu != 7);
             } else {
                 cout << gestionP[i];
+                do {
+                    cout << "Desea dar de Alta su cuenta nuevamente?\n";
+                    cout << "5: SI\n";
+                    cout << "0: NO\n";
+                    cin >> menu;
+                } while (menu != 0 && menu != 5);
             }
 
             if (menu == 1) {
                 mostrarCuenta(i, 2);
             } else if (menu == 2) {
                 while (true) {
+
                     float monto;
                     cout << "Ingrese el monto a depositar:\n";
                     cin >> monto;
@@ -213,9 +238,9 @@ void SistemaGestion::acceso(int nro) {
                         continue;
                     }
                 }
-
             } else if (menu == 3) {
                 while (true) {
+
                     float monto;
                     cout << "Ingrese el monto a extraer:\n";
                     cin >> monto;
@@ -232,9 +257,19 @@ void SistemaGestion::acceso(int nro) {
                     }
                 }
             } else if (menu == 4) {
+
                 gestionP[i].baja();
                 cout << "Su cuenta fue dada de baja exitosamente\n";
             } else if (menu == 5) {
+
+                if (gestionP[i].get_estado()) {
+                    cout << "Su cuenta ya está de Alta\n";
+                } else {
+                    gestionP[i].alta();
+                    cout << "Su cuenta fue dada de Alta exitosamente\n";
+                }
+            } else if (menu == 6) {
+
                 while (true) {
                     float monto;
                     cout << "Ingrese el monto a pagar con tarjeta:\n";
@@ -250,7 +285,8 @@ void SistemaGestion::acceso(int nro) {
                         continue;
                     }
                 }
-            } else if (menu == 6) {
+            } else if (menu == 7) {
+
                 gestionP[i].pagarResumen();
                 cout << "Su saldo actual es: " << gestionP[i].get_cuenta().get_saldo() << '\n';
                 cout << "Su deuda de tarjeta es: " << gestionP[i].get_tarjeta().get_gastado() << '\n';

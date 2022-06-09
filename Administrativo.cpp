@@ -5,7 +5,7 @@
 #include "Administrativo.h"
 #include <iostream>
 
-Administrativo::Administrativo(int t_dni , string t_nombre , string t_mail , float t_sueldo, int t_nro , string t_puesto):
+Administrativo::Administrativo(int t_dni , const string& t_nombre , const string& t_mail , float t_sueldo, int t_nro , const string& t_puesto):
 Empleado(t_dni , t_nombre , t_mail , t_sueldo , t_nro),
 puesto{t_puesto}
 {
@@ -13,12 +13,6 @@ puesto{t_puesto}
     {
         throw invalid_argument ("Debe especificar el puesto de trabajo\n");
     }
-
-}
-
-void Administrativo::baja() {
-    estado = false;
-    cuentaSueldo.~CuentaBancaria();
 
 }
 
@@ -31,10 +25,15 @@ std::ostream &operator<<(ostream &os, const Administrativo &administrativo) {
     os << "Puesto: " << administrativo.puesto << '\n';
     if (administrativo.estado)
     {
+        os << "Estado: ALTA\n";
         os << administrativo.cuentaSueldo;
     } else
     {
         os << "Estado: BAJA\n";
     }
     return os;
+}
+
+void Administrativo::baja() {
+    estado = false;
 }
