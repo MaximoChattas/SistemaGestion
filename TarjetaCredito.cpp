@@ -8,70 +8,58 @@
 
 using namespace std;
 
-TarjetaCredito::TarjetaCredito(int t_nro , float sueldo): numero{t_nro}
-{
-    if (t_nro <= 0)
-    {
-        throw invalid_argument ("El numero de tarjeta debe ser positivo");
+TarjetaCredito::TarjetaCredito(int t_nro, float sueldo) : numero{t_nro} {
+    if (t_nro <= 0) {
+        throw invalid_argument("El numero de tarjeta debe ser positivo");
     }
 
-    if (sueldo <= 50000)
-    {
+    if (sueldo <= 50000) {
         limite = 20000;
         categoria = "Bronce";
-    }
-
-    else if (sueldo <= 100000)
-    {
+    } else if (sueldo <= 100000) {
         limite = 60000;
         categoria = "Plata";
-    }
-
-    else
-    {
+    } else {
         limite = 100000;
         categoria = "Oro";
     }
 }
 
 void TarjetaCredito::usarTarjeta(float monto) {
-    if(monto <= 0)
-    {
-        throw invalid_argument("El monto gastado debe ser mayor a 0");
+    if (monto <= 0) {
+        throw invalid_argument("El monto gastado debe ser mayor a 0\n");
+    } else if (gastado + monto > limite) {
+        throw invalid_argument("Se excedió del límite\n");
     }
 
-    else if (gastado+monto > limite)
-    {
-        throw invalid_argument("Se excedió del límite");
-    }
-
-    gastado+=monto;
+    gastado += monto;
 
 
-}
-
-int TarjetaCredito::get_numero() {
-    return numero;
-}
-
-float TarjetaCredito::get_limite() {
-    return limite;
-}
-
-string TarjetaCredito::get_categoria() {
-    return categoria;
-}
-
-float TarjetaCredito::get_gastado() {
-    return gastado;
 }
 
 std::ostream &operator<<(ostream &os, const TarjetaCredito &tarjeta) {
-    cout << "\tNumero: " << tarjeta.numero << '\n';
-    cout << "\tCategoria: " << tarjeta.categoria << '\n';
-    cout << "\tLimite: $" << tarjeta.limite << '\n';
-    cout << "\tUtilizado: $" << tarjeta.gastado << "\n\n";
+    os << "\tNumero: " << tarjeta.numero << '\n';
+    os << "\tCategoria: " << tarjeta.categoria << '\n';
+    os << "\tLimite: $" << tarjeta.limite << '\n';
+    os << "\tUtilizado: $" << tarjeta.gastado << "\n\n";
     return os;
+}
+
+float TarjetaCredito::get_gastado() const {
+    return gastado;
+}
+
+void TarjetaCredito::pagarTarjeta(float monto) {
+
+    if (monto > gastado) {
+        throw invalid_argument("El monto que desea pagar es mayor a su deuda actual\n");
+    }
+
+    if (monto < 0) {
+        throw invalid_argument("Ingrese un monto positivo a pagar\n");
+    }
+
+    gastado -= monto;
 }
 
 TarjetaCredito::~TarjetaCredito() = default;

@@ -6,18 +6,20 @@
 #define PARCIAL_2_TARJETACREDITO_H
 
 #include <string>
+
 using namespace std;
 
 class TarjetaCredito {
 public:
-    TarjetaCredito(int , float);
+    TarjetaCredito(int, float);
+
     ~TarjetaCredito();
+
+    float get_gastado() const;
+
     void usarTarjeta(float);
 
-    int get_numero();
-    float get_limite();
-    string get_categoria();
-    float get_gastado();
+    void pagarTarjeta(float);
 
     friend std::ostream &operator<<(std::ostream &os, const TarjetaCredito &tarjeta);
 

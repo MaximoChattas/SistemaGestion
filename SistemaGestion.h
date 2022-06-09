@@ -9,6 +9,7 @@
 #include "Empleado.h"
 #include "Profesional.h"
 #include "Administrativo.h"
+
 using namespace std;
 
 class SistemaGestion {
@@ -17,19 +18,20 @@ public:
     SistemaGestion();
 
     void nuevaCuenta();
+
     void acceso(int);
-    void mostrarCuenta(int , int);
+
+    void mostrarCuenta(int, int);
+
     void mostrarTodo();
 
-    int get_cantidad();
+    int get_cantidad() const;
 
 
 private:
     int cantidadCuentas = 0;
     vector<Profesional> gestionP;
     vector<Administrativo> gestionA;
-
-
 };
 
 

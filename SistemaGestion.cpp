@@ -139,6 +139,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionA[i].get_cuenta().deposito(monto);
+                        cout << gestionA[i].get_cuenta();
                         break;
                     }
                     catch (invalid_argument &Error) {
@@ -155,6 +156,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionA[i].get_cuenta().extraccion(monto);
+                        cout << gestionA[i].get_cuenta();
                         break;
                     }
                     catch (invalid_argument &Error) {
@@ -181,8 +183,10 @@ void SistemaGestion::acceso(int nro) {
                     cout << "2: Depositar\n";
                     cout << "3: Extraer\n";
                     cout << "4: Baja\n";
+                    cout << "5: Usar Tarjeta de Credito\n";
+                    cout << "6: Pagar Resumen\n";
                     cin >> menu;
-                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4);
+                } while (menu != 1 && menu != 2 && menu != 3 && menu != 4 && menu != 5 && menu != 6);
             } else {
                 cout << gestionP[i];
             }
@@ -222,13 +226,30 @@ void SistemaGestion::acceso(int nro) {
                 }
             } else if (menu == 4) {
                 gestionP[i].baja();
+            } else if (menu == 5) {
+                while (true) {
+                    float monto;
+                    cout << "Ingrese el monto a pagar con tarjeta:\n";
+                    cin >> monto;
+
+                    try {
+                        gestionP[i].get_tarjeta().usarTarjeta(monto);
+                        break;
+                    }
+                    catch (invalid_argument &Error) {
+                        cout << "Error: " << Error.what();
+                        continue;
+                    }
+                }
+            } else if (menu == 6) {
+                gestionP[i].pagarResumen();
             }
             break;
         }
     }
 }
 
-int SistemaGestion::get_cantidad() {
+int SistemaGestion::get_cantidad() const {
     return cantidadCuentas;
 }
 
@@ -236,15 +257,13 @@ void SistemaGestion::mostrarTodo() {
 
     cout << "Cuentas Administrativas:\n";
 
-    for (auto & i : gestionA)
-    {
+    for (auto &i: gestionA) {
         cout << i;
         cout << "\n\n";
     }
 
     cout << "\n\n\nCuentas Profesionales:\n";
-    for (auto & i : gestionP)
-    {
+    for (auto &i: gestionP) {
         cout << i;
         cout << "\n\n";
     }

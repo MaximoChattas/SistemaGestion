@@ -24,17 +24,17 @@ void Administrativo::baja() {
 
 std::ostream &operator<<(ostream &os, const Administrativo &administrativo) {
 
-    cout << "\n\nNombre: " << administrativo.nombre << '\n';
-    cout << "DNI: " << administrativo.dni << '\n';
-    cout << "Mail: " << administrativo.mail << '\n';
-    cout << "Sueldo: $" << administrativo.sueldo << '\n';
-    cout << "Puesto: " << administrativo.puesto << '\n';
+    os << "\n\nNombre: " << administrativo.nombre << '\n';
+    os << "DNI: " << administrativo.dni << '\n';
+    os << "Mail: " << administrativo.mail << '\n';
+    os << "Sueldo: $" << administrativo.sueldo << '\n';
+    os << "Puesto: " << administrativo.puesto << '\n';
     if (administrativo.estado)
     {
-        cout << administrativo.cuentaSueldo;
+        os << administrativo.cuentaSueldo;
     } else
     {
-        cout << "Estado: BAJA\n";
+        os << "Estado: BAJA\n";
     }
     return os;
 }

@@ -7,25 +7,29 @@
 
 #include <string>
 #include <exception>
+
 using namespace std;
 
 class CuentaBancaria {
 
 public:
-    CuentaBancaria(int , float);
+    CuentaBancaria(int, float);
+
     ~CuentaBancaria();
 
-    int get_nro();
-    float get_saldo();
+    int get_nro() const;
+
+    float get_saldo() const;
 
     void deposito(float);
+
     void extraccion(float);
 
     friend std::ostream &operator<<(std::ostream &os, const CuentaBancaria &cuenta);
 
 private:
-   int cuentaNro;
-   float saldo;
+    int cuentaNro;
+    float saldo;
 };
 
 

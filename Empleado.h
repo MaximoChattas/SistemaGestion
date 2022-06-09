@@ -7,17 +7,18 @@
 
 #include <string>
 #include "CuentaBancaria.h"
+
 using namespace std;
 
 class Empleado {
 public:
-    Empleado(int , const string& , string , float , int);
+    Empleado(int, const string &, const string &, float, int);
 
     string get_nombre();
-    bool get_estado() const;
-    CuentaBancaria get_cuenta();
 
-    friend std::ostream &operator<<(std::ostream &os, const Empleado &empleado);
+    bool get_estado() const;
+
+    CuentaBancaria get_cuenta();
 
     virtual void baja() = 0;
 

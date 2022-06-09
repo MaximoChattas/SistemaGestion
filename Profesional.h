@@ -9,12 +9,15 @@
 #include "TarjetaCredito.h"
 
 
-class Profesional: public Empleado {
+class Profesional : public Empleado {
 public:
-    Profesional(int , string , string , float , int , string , string , int);
+    Profesional(int, const string&, const string&, float, int, const string&, const string&, int);
+
     void baja() override;
 
     TarjetaCredito get_tarjeta();
+
+    void pagarResumen();
 
     friend std::ostream &operator<<(std::ostream &os, const Profesional &profesional);
 
