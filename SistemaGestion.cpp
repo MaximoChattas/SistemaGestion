@@ -139,6 +139,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionA[i].get_cuenta().deposito(monto);
+                        cout << "Se ha depositado correctamente $" << monto << '\n';
                         cout << gestionA[i].get_cuenta();
                         break;
                     }
@@ -156,6 +157,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionA[i].get_cuenta().extraccion(monto);
+                        cout << "Se ha extraido correctamente $" << monto << '\n';
                         cout << gestionA[i].get_cuenta();
                         break;
                     }
@@ -202,6 +204,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionP[i].get_cuenta().deposito(monto);
+                        cout << "Se ha depositado correctamente $" << monto << '\n';
                         cout << gestionP[i].get_cuenta();
                         break;
                     }
@@ -219,6 +222,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionP[i].get_cuenta().extraccion(monto);
+                        cout << "Se ha extraido correctamente $" << monto << '\n';
                         cout << gestionP[i].get_cuenta();
                         break;
                     }
@@ -238,6 +242,7 @@ void SistemaGestion::acceso(int nro) {
 
                     try {
                         gestionP[i].get_tarjeta().usarTarjeta(monto);
+                        cout << "Pago con tarjeta por $" << monto << " registrado" << '\n';
                         break;
                     }
                     catch (invalid_argument &Error) {
@@ -247,6 +252,8 @@ void SistemaGestion::acceso(int nro) {
                 }
             } else if (menu == 6) {
                 gestionP[i].pagarResumen();
+                cout << "Su saldo actual es: " << gestionP[i].get_cuenta().get_saldo() << '\n';
+                cout << "Su deuda de tarjeta es: " << gestionP[i].get_tarjeta().get_gastado() << '\n';
             }
             break;
         }

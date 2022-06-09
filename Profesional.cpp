@@ -46,14 +46,17 @@ void Profesional::baja() {
 
 void Profesional::pagarResumen() {
 
-    if (cuentaSueldo.get_saldo() >= tarjeta.get_gastado()) {
-        tarjeta.pagarTarjeta(tarjeta.get_gastado());
-        cuentaSueldo.extraccion(tarjeta.get_gastado());
-    } else {
-        tarjeta.pagarTarjeta(cuentaSueldo.get_saldo());
-        cuentaSueldo.extraccion(cuentaSueldo.get_saldo());
-    }
+    float monto;
 
+    if (cuentaSueldo.get_saldo() >= tarjeta.get_gastado()) {
+        monto = tarjeta.get_gastado();
+        tarjeta.pagarTarjeta(monto);
+        cuentaSueldo.extraccion(monto);
+    } else {
+        monto = cuentaSueldo.get_saldo();
+        tarjeta.pagarTarjeta(monto);
+        cuentaSueldo.extraccion(monto);
+    }
 }
 
 std::ostream &operator<<(ostream &os, const Profesional &profesional) {
